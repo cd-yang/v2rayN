@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using v2rayN.Handler;
 using v2rayN.HttpProxyHandler;
 using v2rayN.Mode;
+using System.Windows.Input;
+using GlobalHotKey;
 
 namespace v2rayN.Forms
 {
@@ -19,6 +21,8 @@ namespace v2rayN.Forms
         private V2rayUpdateHandle v2rayUpdateHandle2;
         private List<int> lvSelecteds = new List<int>();
         private StatisticsHandler statistics = null;
+        private static HotKeyManager hotKeyManager;
+        private List<HotKey> hotKeys = new List<HotKey>();
 
         #region Window 事件
 
@@ -35,6 +39,35 @@ namespace v2rayN.Forms
                 Utils.ClearTempPath();
                 statistics?.Close();
             };
+
+            // Create the hotkey manager.
+            hotKeyManager = new HotKeyManager();
+            SetHotKey();
+        }
+
+        private void SetHotKey()
+        {
+            var hotkey = hotKeyManager.Register(Key.Q, System.Windows.Input.ModifierKeys.Control);
+            hotKeys.Add(hotkey);
+
+            // Handle hotkey presses.
+            hotKeyManager.KeyPressed += HotKeyManagerPressed;
+        }
+
+        private void UnsetHotKey()
+        {
+            foreach (var hotKey in hotKeys)
+            {
+                hotKeyManager.Unregister(hotKey);
+            }
+
+            hotKeyManager.Dispose();
+        }
+
+        private void HotKeyManagerPressed(object sender, KeyPressedEventArgs e)
+        {
+            if (e.HotKey.Key == Key.Q && e.HotKey.Modifiers == System.Windows.Input.ModifierKeys.Control)
+                MessageBox.Show("Hot key pressed!");
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -1040,6 +1073,7 @@ namespace v2rayN.Forms
 
             statistics?.Close();
 
+            UnsetHotKey();
             //this.Dispose();
             //System.Environment.Exit(System.Environment.ExitCode);
             Application.Exit();
