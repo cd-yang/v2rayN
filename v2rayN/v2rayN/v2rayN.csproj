@@ -410,7 +410,9 @@
     <None Include="Resources\sub.png" />
     <None Include="Resources\checkupdate.png" />
     <None Include="Resources\about.png" />
-    <EmbeddedResource Include="LIB\Google.Protobuf.dll" />
+    <EmbeddedResource Include="LIB\Google.Protobuf.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="LIB\Grpc.Core.Api.dll" />
     <EmbeddedResource Include="LIB\Grpc.Core.dll" />
     <EmbeddedResource Include="LIB\Newtonsoft.Json.dll" />
