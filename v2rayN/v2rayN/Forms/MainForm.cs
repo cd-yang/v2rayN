@@ -412,7 +412,7 @@ namespace v2rayN.Forms
                 var index = config.sysAgentEnabled ? config.listenerType : 0;
                 if (index > 0)
                 {
-                    color = (new Color[] { Color.Red, Color.Orange, Color.DarkGreen, Color.Purple })[index - 1];
+                    color = (new Color[] { Color.Red, Color.Purple, Color.DarkGreen, Color.Orange })[index - 1];
                     //color = ColorTranslator.FromHtml(new string[] { "#CC0066", "#CC6600", "#99CC99", "#666699" }[index - 1]);
                 }
 
