@@ -67,7 +67,12 @@ namespace v2rayN.Forms
         private void HotKeyManagerPressed(object sender, KeyPressedEventArgs e)
         {
             if (e.HotKey.Key == Key.Q && e.HotKey.Modifiers == System.Windows.Input.ModifierKeys.Control)
-                MessageBox.Show("Hot key pressed!");
+            {
+                if (config.listenerType == 2)
+                    menuGlobal_Click(null, null);
+                else if (config.listenerType == 1)
+                    menuGlobalPAC_Click(null, null);
+            }
         }
 
         private void MainForm_Load(object sender, EventArgs e)
