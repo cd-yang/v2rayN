@@ -253,13 +253,13 @@ namespace v2rayN.Forms
             lvServers.HeaderStyle = ColumnHeaderStyle.Nonclickable;
 
             lvServers.Columns.Add("", 30, HorizontalAlignment.Center);
-            lvServers.Columns.Add(UIRes.I18N("LvServiceType"), 80, HorizontalAlignment.Left);
-            lvServers.Columns.Add(UIRes.I18N("LvAlias"), 100, HorizontalAlignment.Left);
+            //lvServers.Columns.Add(UIRes.I18N("LvServiceType"), 80, HorizontalAlignment.Left);
+            //lvServers.Columns.Add(UIRes.I18N("LvAlias"), 100, HorizontalAlignment.Left);
             lvServers.Columns.Add(UIRes.I18N("LvAddress"), 120, HorizontalAlignment.Left);
-            lvServers.Columns.Add(UIRes.I18N("LvPort"), 50, HorizontalAlignment.Left);
-            lvServers.Columns.Add(UIRes.I18N("LvEncryptionMethod"), 90, HorizontalAlignment.Left);
-            lvServers.Columns.Add(UIRes.I18N("LvTransportProtocol"), 70, HorizontalAlignment.Left);
-            lvServers.Columns.Add(UIRes.I18N("LvSubscription"), 50, HorizontalAlignment.Left);
+            //lvServers.Columns.Add(UIRes.I18N("LvPort"), 50, HorizontalAlignment.Left);
+            //lvServers.Columns.Add(UIRes.I18N("LvEncryptionMethod"), 90, HorizontalAlignment.Left);
+            //lvServers.Columns.Add(UIRes.I18N("LvTransportProtocol"), 70, HorizontalAlignment.Left);
+            //lvServers.Columns.Add(UIRes.I18N("LvSubscription"), 50, HorizontalAlignment.Left);
             lvServers.Columns.Add(UIRes.I18N("LvTestResults"), 70, HorizontalAlignment.Left);
 
             if (statistics != null && statistics.Enable)
@@ -307,15 +307,15 @@ namespace v2rayN.Forms
                     lvItem = new ListViewItem(new string[]
                     {
                     def,
-                    ((EConfigType)item.configType).ToString(),
-                    item.remarks,
+                    //((EConfigType)item.configType).ToString(),
+                    //item.remarks,
                     item.address,
-                    item.port.ToString(),
+                    //item.port.ToString(),
                     //item.id,
                     //item.alterId.ToString(),
-                    item.security,
-                    item.network,
-                    item.getSubRemarks(config),
+                    //item.security,
+                    //item.network,
+                    //item.getSubRemarks(config),
                     item.testResult,
                     totalUp,
                     totalDown,
@@ -328,15 +328,15 @@ namespace v2rayN.Forms
                     lvItem = new ListViewItem(new string[]
                    {
                     def,
-                    ((EConfigType)item.configType).ToString(),
-                    item.remarks,
+                    //((EConfigType)item.configType).ToString(),
+                    //item.remarks,
                     item.address,
-                    item.port.ToString(),
+                    //item.port.ToString(),
                     //item.id,
                     //item.alterId.ToString(),
-                    item.security,
-                    item.network,
-                    item.getSubRemarks(config),
+                    //item.security,
+                    //item.network,
+                    //item.getSubRemarks(config),
                     item.testResult
                     //totalUp,
                     //totalDown,
@@ -412,7 +412,7 @@ namespace v2rayN.Forms
             {
                 return;
             }
-            qrCodeControl.showQRCode(index, config);
+            //qrCodeControl.showQRCode(index, config);
         }
 
         private void DisplayToolStatus()
@@ -688,7 +688,7 @@ namespace v2rayN.Forms
         private void menuPingServer_Click(object sender, EventArgs e)
         {
             GetLvSelectedIndex();
-            ClearTestResult();
+            //ClearTestResult();
             bgwPing.RunWorkerAsync();
         }
 
@@ -700,7 +700,7 @@ namespace v2rayN.Forms
                 return;
             }
 
-            UI.Show(UIRes.I18N("SpeedServerTips"));
+            //UI.Show(UIRes.I18N("SpeedServerTips"));
 
             GetLvSelectedIndex();
             ServerSpeedTest();
@@ -1155,7 +1155,7 @@ namespace v2rayN.Forms
         private void SetTestResult(int k, string txt)
         {
             config.vmess[k].testResult = txt;
-            lvServers.Items[k].SubItems[8].Text = txt;
+            lvServers.Items[k].SubItems[2].Text = txt;
         }
         private void ClearTestResult()
         {
@@ -1193,7 +1193,7 @@ namespace v2rayN.Forms
             {
                 return;
             }
-            ClearTestResult();
+            //ClearTestResult();
 
             string url = Global.SpeedTestUrl;
             testCounter = 0;
