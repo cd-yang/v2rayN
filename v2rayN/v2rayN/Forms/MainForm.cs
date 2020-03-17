@@ -10,6 +10,7 @@ using v2rayN.HttpProxyHandler;
 using v2rayN.Mode;
 using System.Windows.Input;
 using GlobalHotKey;
+using System.Diagnostics;
 
 namespace v2rayN.Forms
 {
@@ -47,11 +48,18 @@ namespace v2rayN.Forms
 
         private void SetHotKey()
         {
-            var hotkey = hotKeyManager.Register(Key.Q, System.Windows.Input.ModifierKeys.Control);
-            hotKeys.Add(hotkey);
+            try
+            {
+                var hotkey = hotKeyManager.Register(Key.Q, System.Windows.Input.ModifierKeys.Control);
+                hotKeys.Add(hotkey);
 
-            // Handle hotkey presses.
-            hotKeyManager.KeyPressed += HotKeyManagerPressed;
+                // Handle hotkey presses.
+                hotKeyManager.KeyPressed += HotKeyManagerPressed;
+            }
+            catch (System.ComponentModel.Win32Exception)
+            {
+                Debug.WriteLine("Reg hotkey failed");
+            }
         }
 
         private void UnsetHotKey()
