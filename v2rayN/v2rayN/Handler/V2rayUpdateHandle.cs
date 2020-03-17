@@ -101,6 +101,9 @@ namespace v2rayN.Handler
                 progressPercentage = -1;
 
                 WebClientEx ws = new WebClientEx();
+
+                ws.Proxy = new WebProxy("127.0.0.1", config.inbound[0].localPort + 1);
+
                 ws.DownloadFileCompleted += ws_DownloadFileCompleted;
                 ws.DownloadProgressChanged += ws_DownloadProgressChanged;
                 ws.DownloadFileAsync(new Uri(url), Utils.GetPath(DownloadFileName));

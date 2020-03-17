@@ -694,11 +694,11 @@ namespace v2rayN.Forms
 
         private void menuSpeedServer_Click(object sender, EventArgs e)
         {
-            if (!config.sysAgentEnabled || config.listenerType != 1)
-            {
-                UI.Show(UIRes.I18N("NeedHttpGlobalProxy"));
-                return;
-            }
+            //if (!config.sysAgentEnabled || config.listenerType != 1)
+            //{
+            //    UI.Show(UIRes.I18N("NeedHttpGlobalProxy"));
+            //    return;
+            //}
 
             //UI.Show(UIRes.I18N("SpeedServerTips"));
 
